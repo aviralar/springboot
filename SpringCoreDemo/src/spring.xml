@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC ".//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="parenttriangle" class="org.aviral.springcore.Triangle" abstract="true">
+		<property name="pointA" ref="pointA"></property>
+		<property name="points">
+			<list>
+				<ref bean="pointB"></ref>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="triangle1" class="org.aviral.springcore.Triangle" parent="parenttriangle">
+		<property name="pointC" ref="pointC"></property>
+	</bean>
+	
+	<bean id="triangle2" class="org.aviral.springcore.Triangle" parent="parenttriangle">
+		<property name="points">
+			<list merge="true">
+				<ref bean="pointD"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="pointA" class="org.aviral.springcore.Point">
+		<property name="x" value="0" />
+		<property name="y" value="0" />
+	</bean>
+	
+	<bean id="pointB" class="org.aviral.springcore.Point">
+		<property name="x" value="-20" />
+		<property name="y" value="0" />
+	</bean>
+	
+	<bean id="pointC" class="org.aviral.springcore.Point">
+		<property name="x" value="1" />
+		<property name="y" value="1" />
+	</bean>
+	
+	<bean id="pointD" class="org.aviral.springcore.Point">
+		<property name="x" value="20" />
+		<property name="y" value="0" />
+	</bean> 
+</beans>
